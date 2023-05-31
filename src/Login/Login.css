@@ -1,0 +1,207 @@
+.Login-container {
+    height: 87vh;
+    width: 100%;
+    position: relative;
+}
+
+.Login-up-wrapper {
+    display: flex;
+    width: 95%;
+    max-width: 1280px;
+    height: 85%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    /* border: 1px solid blue; */
+    /* background: linear-gradient(90deg, #00C6CF 60%, white 60%); */
+    /* box-shadow: 0px 0px 1px firebrick */
+}
+
+.first-parent {
+    width: 60%;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: lightblue;
+    /* border: 1px solid; */
+}
+
+.second-parent {
+    width: 40%;
+    height: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: var(--complementary);
+    /* border: 1px solid; */
+}
+
+.center-mp {
+    margin: 0 auto;
+    position: relative;
+    translate: 0 -50%;
+    top: 50%;
+}
+
+
+.hidden {
+    color: red;
+    font-size: small;
+    margin-bottom: 4px;
+    padding-left: 10px;
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.small-red-text {
+    color: red;
+    font-size: small;
+    margin-bottom: 4px;
+    padding-left: 10px;
+}
+
+
+
+.Login-wrapper {
+    width: 50%;
+    min-width: 270px;
+    /* border: 1px solid #00C6CF; */
+}
+
+.Login {
+    width: 100%;
+}
+
+
+.Login h2 {
+    color: var(--font-color);
+    margin: 20px 0px;
+}
+
+.email {
+    width: 100%;
+    position: relative;
+}
+
+.Login-input {
+    width: 100%;
+    height: 36px;
+    border-radius: 7px;
+    padding-left: 40px;
+    border: none;
+}
+
+.Login-input:focus {
+    outline: none;
+
+}
+
+.icon {
+    position: absolute;
+    translate: 0 -50%;
+    top: 50%;
+    left: 3%;
+}
+
+.icon svg {
+    font-size: medium;
+    color: grey;
+}
+
+.button {
+    position: relative;
+    transform: translate(-50%, 0);
+    left: 50%;
+    width: 130px;
+    background: var(--accent);
+    color: var(--font-color);
+    border-radius: 30px;
+    border: 3px solid grey;
+    padding: 8px;
+    margin: 25px 0;
+    text-align: center;
+    cursor: context-menu;
+}
+
+.button:hover {
+    background: var(--font-color);
+    color: var(--background-color);
+    border: 3px solid grey;
+}
+
+
+
+.password {
+    position: relative;
+}
+
+
+/******************* signout *************************/
+
+.signout-wrapper {
+    width: 90%;
+    min-width: 270px;
+    /* border: 1px solid; */
+}
+
+.signout-button {
+    width: 100%;
+    /* border: 1px solid; */
+}
+
+.signout-text :is(h2, p) {
+    color: var(--accent);
+    text-align: center;
+}
+
+.signout-text p {
+    width: 70%;
+    margin: 20px auto;
+}
+
+.d-off {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}
+
+/***********************************/
+
+.first-name {
+    position: relative;
+}
+
+.last-name {
+    position: relative;
+}
+
+@media only screen and (max-width:850px) {
+
+    .first-parent {
+        width: 100%;
+        height: 100%;
+    }
+
+    .second-parent {
+        width: 100%;
+        height: 100%;
+    }
+
+    .Login-up-wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .Login-wrapper {
+        min-width: 300px;
+    }
+
+    .signout-wrapper {
+        min-width: 300px;
+    }
+}

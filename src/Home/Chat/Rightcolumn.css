@@ -19,7 +19,7 @@
     width: 100%;
 }
 
-.message-bar input {
+.message-bar input[type=text] {
     width: 80%;
     padding: 10px;
     margin: auto;

@@ -4,7 +4,7 @@ import './Connection.css'
 function Connection({items, connectionsData}) {
 
   return (
-    <div >
+    <div className='connections-container' >
       {
         (items || [] ).map((item) => {
 
@@ -14,12 +14,12 @@ function Connection({items, connectionsData}) {
             // console.log(items,'items')
 
             return (
-                <div onClick={ () => { connectionsData(item) } } >
-                    <div className='connection-img'>
+                <div className='connections'  onClick={ () => { connectionsData(item) } } >
+                    <div className='profile-img'>
                         <img src={avtar} alt='avtar'></img>
                     </div>
                     <div>
-                        <p>{userName}</p>
+                        <strong>{userName}</strong>
                         <p>{ email && email }</p>
                     </div>
                 </div>

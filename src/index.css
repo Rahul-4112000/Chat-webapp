@@ -1,3 +1,10 @@
+:root {
+  --background-color: white;
+  --background-shade: rgb(231 228 239);
+  --active-chat-color: rgb(51,144,236);
+  --font-color: white;
+}
+
 * {
   margin: 0;
   padding: 0;

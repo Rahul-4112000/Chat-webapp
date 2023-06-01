@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
 
 import { RxHamburgerMenu } from 'react-icons/rx'
+import { BsMoonStars } from 'react-icons/bs';
+import { FiLogOut } from 'react-icons/fi';
 import { FcSearch } from 'react-icons/fc'
 import Connection from './Connection';
 
@@ -12,6 +14,7 @@ function Sidebar({ userData, userDataHandler, handleLoginUserData }) {
     const { avtar, connections, userId } = userData;
     const [connectionData, setConnectionData] = useState(connections);
     const [existLabel, setexistLabel] = useState(false);
+    const [dropDownMenu, setDropDownMenu] = useState(false);
 
     // console.log(userData, 'userData')
 
@@ -92,26 +95,44 @@ function Sidebar({ userData, userDataHandler, handleLoginUserData }) {
                         <img src={avtar} alt='profile' ></img>
                     </div>
                     <h3>Chats</h3>
-                    <div className='humburger-icon'>
+                    <div className='humburger-icon' onClick={() => { setDropDownMenu(!dropDownMenu)}}>
                         <RxHamburgerMenu />
                     </div>
+                    {
+                        dropDownMenu &&
+                        <div className='drop-down-menu'>
+                            <div>
+                                <div className='menu-icon'><BsMoonStars /></div>
+                                <div className='text'>Dark Mode</div>
+                                <div className="container">
+                                    <label className="switch"><input type="checkbox" />
+                                        <div></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <div className='menu-icon'><FiLogOut /></div>
+                                <div className='text'>Logout</div>
+                            </div>
+                        </div>
+                    }
                 </div>
                 <div className='search-container'>
                     <input placeholder='Search friends here...' value={search} onChange={searchHandler}></input>
                     <FcSearch />
                 </div>
                 <hr></hr>
-                {
-                    noDatafound ? <h1> no data found </h1> : <Connection connectionsData={connectionHandler} items={connectionData} />
-                }
-                {
-                    !connectionData?.length && !noDatafound && <h1>No connection found</h1>
-                }
-                {
-                    existLabel && search && <div className='connection-exist-error'>This Name is already exist in your connection</div>
-                }
-
             </header>
+            {
+                noDatafound ? <h1> no data found </h1> : <Connection connectionsData={connectionHandler} items={connectionData} />
+            }
+            {
+                !connectionData?.length && !noDatafound && <h1>No connection found</h1>
+            }
+            {
+                existLabel && search && <div className='connection-exist-error'>This Name is already exist in your connection</div>
+            }
+
         </aside>
     )
 }

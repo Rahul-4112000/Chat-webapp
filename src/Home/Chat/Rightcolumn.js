@@ -86,7 +86,7 @@ function Rightcolumn({ loginUserData, chattingUserData }) {
             <img src={avtar} alt='friend'></img>
           </div>
           <div>
-            <div>{userName}</div>
+            <strong>{userName}</strong>
             <div>{status}</div>
           </div>
         </div>
@@ -138,7 +138,9 @@ function Rightcolumn({ loginUserData, chattingUserData }) {
       </div>
     </div>
   ) : (
-    <h1>No chat has been done</h1>
+    <div className='deactive-connections'>
+      <div className='bkg-img'></div>
+    </div>
   );
 }
 

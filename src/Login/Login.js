@@ -33,11 +33,11 @@ const Login = () => {
     }];
 
     function preventBack() {
-        window.history.forward(); 
+        window.history.forward();
     }
-      
+
     setTimeout(preventBack(), 0);
-      
+
     window.onunload = function () { return null };
 
     const dispatch = useDispatch();
@@ -62,7 +62,7 @@ const Login = () => {
     const [user, setUser] = useState({
         userName: "",
         avtar: "",
-        gender: '',
+        gender: 'female',
         email: '',
         theme: 'light',
         status: 'online',
@@ -85,6 +85,8 @@ const Login = () => {
     const signUp = (key) => (event) => {
         setUser({ ...user, [key]: event.target.value });
     }
+
+    console.log(user);
 
     const SubmitLoginData = (event) => {
         event.preventDefault();
@@ -112,15 +114,15 @@ const Login = () => {
         }
 
 
-        if(localStorage.getItem('users')) {
+        if (localStorage.getItem('users')) {
             const users = JSON.parse(localStorage.getItem('users'));
 
-           const userDetails =  users.find((user) => 
+            const userDetails = users.find((user) =>
                 user.email === loginEmail && user.password === loginPassword
             );
 
-            if(userDetails) {
-                navigate('/home',{ state: userDetails });
+            if (userDetails) {
+                navigate('/home', { state: userDetails });
             }
             else setAccountExistError(true);
 
@@ -191,28 +193,28 @@ const Login = () => {
     const navigateToHomepage = () => {
 
         const userid = uuidv4();
-        let lsUsers = [] ;
-        let userDetails ;
+        let lsUsers = [];
+        let userDetails;
 
         if (user.gender === "male") {
             userDetails = { ...user, userId: userid, ['avtar']: profileIcons[0].avtar }
-           
+
         }
         else if (user.gender === "female") {
             userDetails = { ...user, userId: userid, ['avtar']: profileIcons[3].avtar }
         }
 
-        if(localStorage.getItem('users')) {
+        if (localStorage.getItem('users')) {
             lsUsers = JSON.parse(localStorage.getItem('users'))
         }
 
-        const users = [ ...lsUsers, userDetails ];
+        const users = [...lsUsers, userDetails];
 
         // console.log(users,'users');
 
-        localStorage.setItem('users',JSON.stringify(users));
-        
-        navigate('/home',{ state: userDetails });
+        localStorage.setItem('users', JSON.stringify(users));
+
+        navigate('/home', { state: userDetails });
 
     }
 
@@ -220,11 +222,13 @@ const Login = () => {
 
     return (
         <div className="Login-container">
+            <h2>Please Signin to begin chat</h2>
             <div className='Login-up-wrapper'>
+
 
                 <div className="first-parent ">
 
-                    <div className='Login-wrapper center-mp' >
+                    <div className='Login-wrapper' >
 
                         <form onSubmit={SubmitLoginData} className={`Login ${displayOn ? null : 'd-off'}`}>
                             <h2>Sign in</h2>
@@ -262,11 +266,17 @@ const Login = () => {
                             </div>
                             <div className={`hidden ${emailError ? 'visible' : null}`}>Enter a valid email format</div>
 
-                            <div>
-                                <input type="radio" value="male" name='gender' onChange={signUp("gender")} />
-                                <label >Male</label>
-                                <input type="radio" value="female" name='gender' onChange={signUp("gender")} />
-                                <label >Female</label>
+                            <div className="select-gender">
+                                <input type="radio" name="select" id="option-1" value='male'  />
+                                <input type="radio" name="select" id="option-2" value='female'   />
+                                <label htmlFor="option-1" className="option option-1" onClick={() => { setUser({...user,gender:'male'}) }} >
+                                    <div class="dot"></div>
+                                    <span>Male</span>
+                                </label>
+                                <label htmlFor="option-2" className="option option-2"  onClick={() => { setUser({...user,gender:'female'}) }}>
+                                    <div class="dot"></div>
+                                    <span>Female</span>
+                                </label>
                             </div>
 
                             <div className='password'>
@@ -288,7 +298,7 @@ const Login = () => {
                 </div>
 
                 <div className='second-parent '>
-                    <div className='signout-wrapper center-mp'>
+                    <div className='signout-wrapper'>
                         <div className='signout-button'>
                             <div className={`signout-text ${displayOn ? null : 'd-off'}`}>
                                 <h2>Welcome Friend!</h2>

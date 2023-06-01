@@ -13,9 +13,13 @@ function Home() {
 
   let { state: userDetails } = location;
 
-  const users = JSON.parse(localStorage.getItem('users'))
+  console.log(userDetails, 'userDetails');
 
-  userDetails = users.find(item => item.userId === userDetails.userId)
+  if (userDetails) {
+    const users = JSON.parse(localStorage.getItem('users'))
+
+    userDetails = users.find(item => item.userId === userDetails.userId);
+  }
 
   const [userData, setUserData] = useState(userDetails);
   const [chattingUserData, setChattingUserData] = useState(false);
@@ -44,10 +48,16 @@ function Home() {
   return (
     <div className='container' >
       <div className='wrapper'>
-        <Sidebar userData={userData} userDataHandler={handleUserData} handleLoginUserData={handleLoginUserData} />
+
         {
-        <Rightcolumn chattingUserData={chattingUserData} loginUserData={userData} />
+          userDetails &&
+          <>
+            <Sidebar userData={userData} userDataHandler={handleUserData} handleLoginUserData={handleLoginUserData} />
+            <Rightcolumn chattingUserData={chattingUserData} loginUserData={userData} />
+          </>
         }
+
+
       </div>
     </div>
   )

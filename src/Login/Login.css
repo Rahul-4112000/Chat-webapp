@@ -1,22 +1,29 @@
 .Login-container {
-    height: 87vh;
     width: 100%;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Login-container h2 {
+    text-align: center;
+    margin-top: 50px;
 }
 
 .Login-up-wrapper {
     display: flex;
     width: 95%;
     max-width: 1280px;
-    height: 85%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    height: 485px;
     border-radius: 10px;
-    /* border: 1px solid blue; */
-    /* background: linear-gradient(90deg, #00C6CF 60%, white 60%); */
-    /* box-shadow: 0px 0px 1px firebrick */
+    margin-block: 50px;
+}
+
+.Login-up-wrapper > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .first-parent {
@@ -24,7 +31,7 @@
     height: 100%;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    background-color: lightblue;
+    background-color: var(--active-chat-color);
     /* border: 1px solid; */
 }
 
@@ -33,7 +40,7 @@
     height: 100%;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: var(--complementary);
+    background-color: #F5F5F5;
     /* border: 1px solid; */
 }
 
@@ -46,7 +53,7 @@
 
 
 .hidden {
-    color: red;
+    color: floralwhite;
     font-size: small;
     margin-bottom: 4px;
     padding-left: 10px;
@@ -112,15 +119,90 @@
     color: grey;
 }
 
+
+/*****************/
+
+.select-gender{
+    display: inline-flex;
+    background: #fff;
+    height: 36px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    padding: 5px 0px;
+    margin-bottom: 16px;
+    /* box-shadow: 5px 5px 30px rgba(0,0,0,0.2); */
+  }
+  .select-gender .option{
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 2px solid lightgrey;
+    transition: all 0.3s ease;
+  }
+  .select-gender .option .dot{
+    height: 15px;
+    width: 15px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    position: relative;
+  }
+  .select-gender .option .dot::before{
+    position: absolute;
+    content: "";
+    top: 4px;
+    left: 4px;
+    width: 8px;
+    height: 8px;
+    background: #0069d9;
+    border-radius: 50%;
+    opacity: 0;
+    transform: scale(1.5);
+    transition: all 0.3s ease;
+  }
+  input[type="radio"]{
+    display: none;
+  }
+  #option-1:checked:checked ~ .option-1,
+  #option-2:checked:checked ~ .option-2{
+    border-color: #0069d9;
+    background: #0069d9;
+  }
+  #option-1:checked:checked ~ .option-1 .dot,
+  #option-2:checked:checked ~ .option-2 .dot{
+    background: #fff;
+  }
+  #option-1:checked:checked ~ .option-1 .dot::before,
+  #option-2:checked:checked ~ .option-2 .dot::before{
+    opacity: 1;
+    transform: scale(1);
+  }
+  .select-gender .option span{
+    font-size: medium;
+    color: #808080;
+  }
+  #option-1:checked:checked ~ .option-1 span,
+  #option-2:checked:checked ~ .option-2 span{
+    color: #fff;
+  }
+  /*********/
 .button {
     position: relative;
     transform: translate(-50%, 0);
     left: 50%;
     width: 130px;
-    background: var(--accent);
+    background: var(--active-chat-color);
     color: var(--font-color);
     border-radius: 30px;
-    border: 3px solid grey;
+    border: 3px solid white;
     padding: 8px;
     margin: 25px 0;
     text-align: center;
@@ -128,9 +210,9 @@
 }
 
 .button:hover {
-    background: var(--font-color);
-    color: var(--background-color);
-    border: 3px solid grey;
+    background: #15f4ee;
+    color: black;
+    border: 3px solid #15f4ee;
 }
 
 
@@ -154,7 +236,7 @@
 }
 
 .signout-text :is(h2, p) {
-    color: var(--accent);
+    color: #7272cb;
     text-align: center;
 }
 
@@ -183,6 +265,10 @@
 
 @media only screen and (max-width:850px) {
 
+    .Login-container > h2 {
+        font-size: large;
+    }
+
     .first-parent {
         width: 100%;
         height: 100%;
@@ -195,6 +281,7 @@
 
     .Login-up-wrapper {
         flex-direction: column-reverse;
+        height: 100%;
     }
 
     .Login-wrapper {
